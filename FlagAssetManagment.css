@@ -1,0 +1,30 @@
+@charset "utf-8";
+#FrenchFlag{
+	width:100px;
+	height:100px;
+	border-radius:100%;
+	background-image:url(FrenchFlag.png);
+	background-size:contain;
+	float:left;
+	
+	
+}
+#SpanishFlag{
+	width:100px;
+	height:100px;
+	border-radius:100%;
+	background-image:url(SpanishFlag.png);
+	background-size:cover;
+	float:left;
+	
+	
+}
+#GermanFlag{
+	width:100px;
+	height:100px;
+	border-radius:100%;
+	background-image:url(GermanFlag.png);
+	background-size:cover;
+	float:left;
+	
+}
