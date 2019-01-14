@@ -1,0 +1,90 @@
+@charset "utf-8";
+#Outline{
+	width:100px;
+	height:100px;
+	border-radius:100%;
+}
+.Circle{
+	width:33px;
+	height:100px;
+	transform:rotate(360deg);
+	
+}
+.HorizontalCircle{
+	width:33px;
+	height:100px;
+	transform:rotate(90deg);
+	
+}
+.BlueFrance{
+	border-top-left-radius:500px;
+	border-bottom-left-radius:500px;
+	background:#002395;
+	position:relative;
+	margin-top:50px;
+}
+.WhiteFrance{
+	background:white;
+	position:relative;
+	margin-top:50px;
+	
+}
+.RedFrance{
+	border-bottom-right-radius:500px;
+	border-top-right-radius:500px;
+	background:#ED2939;
+	position:relative;
+	margin-top:50px;
+}
+.BlackGermany{
+	border-top-left-radius:500px;
+	border-bottom-left-radius:500px;
+	background:#000000;
+	position:absolute;
+	
+	
+
+	}
+.RedGermany{
+	background:red;
+	margin-top:33px;
+	margin-bottom:33px;
+	position:absolute;
+}
+.YellowGermany{
+	border-top-right-radius:500px;
+	border-bottom-right-radius:500px;
+	background:yellow;
+	margin-top:66px;
+	position:absolute;	
+	
+}
+.RedSpainTop{
+	border-top-left-radius:500px;
+	border-bottom-left-radius:500px;
+	background:#DB002C;
+	position:absolute;
+}
+.RedSpainBottom{
+	border-top-right-radius:500px;
+	border-bottom-right-radius:500px;
+	background:#DB002C;
+	margin-top:66px;
+	position:absolute;
+}
+.OrangeSpain{
+	background:#EDBC00;
+	margin-top:33px;
+	margin-bottom:33px;
+	position:absolute;
+}
+	
+#OutlineTestCirlce{
+	width:;
+	height:853px;
+	border-radius:100%;
+	background:url(https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1200px-Flag_of_France.svg.png);
+	background-size:contain;
+
+	
+}	

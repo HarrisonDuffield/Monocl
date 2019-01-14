@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+#RegistrationCircle{
+	height:5em;
+	width:10em;
+	border-radius:100%;
+	background-color:#dca12a;
+	text-align:center;
+	float:right;
+	margin-right:10em;
+	margin-left:10em;
+}
+#LoginCircle{
+	height:5em;
+	width:10em;
+	border-radius:100%;
+	background-color:Red;
+	text-align:center;
+	float:right;
+	margin-right:10em;
+	margin-left:10em;
+}
+#LogInBox{
+	height:20em;
+	width:15em;
+	background-color:beige;
+	margin: 5% auto 15% auto;
+}
+img{
+	height:25em;
+	width:25em;
+	float:left;
+	margin-right:10em;
+	display:inline-block;
+}
+
+	
+
+
+
