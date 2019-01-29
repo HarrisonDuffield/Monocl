@@ -7,7 +7,9 @@
 <div id="MonocleHeaderBar">
     <img src="Assets/Monocl.png" align="left">
 </div>
+
 <form method="post" action="Registration.php"> 
+    <?php include("..\MonoclBackend\Errors.php");?>
     <fieldset id="LogInBox">
         <legend>Sign Up</legend>
         <b>Enter Username:</b>
@@ -26,10 +28,10 @@
         <input align="texttop" type="text" name="ClassCode" id="ClassCode"value="<?php echo $ClassCode; ?>">
         <br>
         <b>Create a Password:<b>
-        <input align="texttop" type="text" name="PwdInput" id="PwdInput" value="<?php echo $PasswordOriginal; ?>">
+        <input align="texttop" type="password" name="PwdInput" id="PwdInput" value="<?php echo $PasswordOriginal; ?>">
         <br>
         <b>Password Confirmation:<b>
-        <input align="texttop" type="text" name="PwdConfirmation" id="PwdConfirmation" value="<?php echo $PasswordConfirmation; ?>">
+        <input align="texttop" type="password" name="PwdConfirmation" id="PwdConfirmation" value="<?php echo $PasswordConfirmation; ?>">
         <input type="submit" value="Sign Up" id="NextButton" name="SignUpButtonGreen">
         </fieldset>
 </form>
