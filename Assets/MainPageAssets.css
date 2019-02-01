@@ -1,0 +1,19 @@
+#beige-box-main{
+    height: 75em;
+    width : 45em;
+    background-color:beige;
+    position: relative;
+    left:5px;
+    bottom: 100px;
+}
+#beige-box-homeworks{
+    height: 45em;
+    width: 25em;
+    position: relative;
+    background-color: beige;
+}
+#course-completion-tracking-circle{
+    background-color: green;
+    border-radius: 50%;
+    height: 5em;
+}
