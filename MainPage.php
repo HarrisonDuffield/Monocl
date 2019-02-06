@@ -6,13 +6,9 @@
     <img src="Assets/Monocl.png" align="left">
 </div>
 <div id="beige-box-main">
-    <table>
-        <tr>
-            <th> 
-        </tr>
-    </table>    
-   
-    
+    <?php
+    AnsweredPercentageRetrieval()
+    ?>   
     
 </div>
     
