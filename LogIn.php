@@ -9,9 +9,10 @@
     <img src="Assets/Monocl.png" align="left" size="tiny">
 </div>
 <a> Log In!</a>
+<div id="formContatiner" align ="center">
 <form method="POST" action="LogIn.php">
     <?php include("..\MonoclBackend\Errors.php");?>
-    <fieldset id="LogInBox" align="center">
+    <fieldset id="LogInBox">
         <b> Enter Username</b>
         <input type="text" align="middle" name="UserName" id="UserName" value="<?php echo $UserName; ?>">
         <br>
@@ -23,4 +24,5 @@
         <a href="\Registration.php"> Don't Have an account? Sign Up!</link>
     </fieldset>
 </form>
+</div>
 </html>

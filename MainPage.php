@@ -11,9 +11,8 @@
     require("../MonoclBackend/QuestionTablePopulator.php");
     TopicTableOrganisation();
     
-    
     ?>   
-    
+
 </div>
     
     
