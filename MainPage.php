@@ -12,6 +12,11 @@
     TopicTableOrganisation();    
     ?>   
 </div>
+<div id ="course-completion-tracking-circle">
+    <?php
+        BigCiclePercentageCalc();
+    ?>
+</div>
     
     
 </html>
