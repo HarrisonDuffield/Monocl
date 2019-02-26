@@ -13,6 +13,7 @@
     ?>   
 </div>
 <div id ="course-completion-tracking-circle">
+    <a> Percentage Of Language Complete : </a>
     <?php
         BigCiclePercentageCalc();
     ?>
