@@ -9,10 +9,8 @@
 <div id="beige-box-main">
     <?php
     require("../MonoclBackend/QuestionTablePopulator.php");
-    TopicTableOrganisation();
-    
+    TopicTableOrganisation();    
     ?>   
-
 </div>
     
     

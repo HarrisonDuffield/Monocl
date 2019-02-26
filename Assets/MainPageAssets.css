@@ -1,10 +1,9 @@
 #beige-box-main{
-    height: 75em;
-    width : 45em;
+    
     background-color:beige;
     position: relative;
-    left:5px;
-    bottom: 100px;
+    
+    display:inline-block;
 }
 #beige-box-homeworks{
     height: 45em;
