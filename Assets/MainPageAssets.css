@@ -14,5 +14,10 @@
 #course-completion-tracking-circle{
     background-color: green;
     border-radius: 50%;
-    height: 5em;
+    height:17em;
+    width : 17em;
+    display:table-cell;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
 }

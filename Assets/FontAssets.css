@@ -9,6 +9,7 @@ a{
 	color:white;
 	font-size:2em;
 	text-decoration:none;
+        font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
 }
 a:hover{
 	text-decoration:underline;
@@ -17,6 +18,9 @@ c{
 	color:white;
 	font-size:80%;
 	
+}
+b{
+    font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
 }
 button{
 	align:center;
