@@ -5,6 +5,13 @@
     
     display:inline-block;
 }
+#beige-box-leaderboard{
+    
+    background-color:beige;
+    position: relative;
+    
+    display:inline-block;
+}
 #beige-box-homeworks{
     height: 45em;
     width: 25em;
