@@ -2,6 +2,11 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="MainPage.js"> </script>
+        <script>$(document).ready(function(){
+    $("#test").click(function(e){
+        alert("hello22");
+    })
+})</script>
     </head>
     <title>Main Page | Monocl</title>    
 <a href="../MonoclBackend/QuestionTablePopulator.php"></a>
@@ -26,9 +31,12 @@
 
 <div id="beige-box-main">
     <button type="button" onclick ="ClassLeaderBoard()" id ="InClass">In Class </button>
-    <button type ="button" id="AllUsers">All Users</button>
+    <button type ="button" onclick ="PublicLeaderBoard()" id="AllUsers">All Users</button>
+    <button type ="button" onclick ="testbed()" id="test">testbed</button>
     <button type="button" id ="InClass">Change Sort </button>
-    <f><script>$('#result').load('ajax/AJAXtest.php')</script></f>
+    <g id="Output">The G tag </g>
+    <f>Now</f>
+    <div id="theTable"></div>
 </div>
 <div id ="FrenchFlag">
     //on click set session id tag to french
