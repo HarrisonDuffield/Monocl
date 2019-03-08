@@ -32,11 +32,10 @@
 <div id="beige-box-main">
     <button type="button" onclick ="ClassLeaderBoard()" id ="InClass">In Class </button>
     <button type ="button" onclick ="PublicLeaderBoard()" id="AllUsers">All Users</button>
-    <button type ="button" onclick ="testbed()" id="test">testbed</button>
     <button type="button" id ="InClass">Change Sort </button>
-    <g id="Output">The G tag </g>
-    <f>Now</f>
-    <div id="theTable"></div>
+    <table id="LeaderBoard"></table>
+    <table id="f"> HAVE </table>
+    </div>
 </div>
 <div id ="FrenchFlag">
     //on click set session id tag to french

@@ -2,12 +2,6 @@
 window.onload = function(){
     alert("Main Page Js File Loaded");
 }
-$(document).ready(function(){
-    $("#test").click(function(e){
-        alert("hello");
-    })
-})
-
 function ClassLeaderBoard(){
     console.log("Class Leader Board Button Registed Click");
     $.ajax({
@@ -15,11 +9,11 @@ function ClassLeaderBoard(){
         type:"POST",
         dataType: 'html',
         beforeSend:function(){
-            $("f").text("test");
+            //$("f").text("test");
         },
          success: function(result,status,xhr){
             alert(result);
-            $("theTable").text(result); 
+            $("#f").html(result); 
             console.log(result);
             },
             error: function(xhr,status,error){
@@ -45,20 +39,4 @@ function PublicLeaderBoard(){
     });
     $("f").text("Button word");
     console.log("click");
-}
-function testbed(){
-    console.log("called");
-    $.ajax(
-        {
-            url: 'InterfaceLayer/response.php',
-            type: 'get',
-            dataType:'html',
-            error:function(response){
-            console.log(url);
-            },
-            success:function(response){
-                window.alert(response);
-                console.log("Woring");
-            }
-        })
 }
