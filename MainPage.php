@@ -21,6 +21,7 @@
     require("../MonoclBackend/QuestionTablePopulator.php");
     TopicTableOrganisation();    
     ?>   
+    
 </div>
 <div id ="course-completion-tracking-circle">
     <a> Percentage Of Language Complete : </a>
@@ -32,9 +33,8 @@
 <div id="beige-box-main">
     <button type="button" onclick ="ClassLeaderBoard()" id ="InClass">In Class </button>
     <button type ="button" onclick ="PublicLeaderBoard()" id="AllUsers">All Users</button>
-    <button type="button" id ="InClass">Change Sort </button>
+    <button type="button" onclick ="TableReversal()" id ="Reversal">Sort In OppositeDirection</button>
     <table id="LeaderBoard"></table>
-    <table id="f"> HAVE </table>
     </div>
 </div>
 <div id ="FrenchFlag">
