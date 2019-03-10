@@ -2,7 +2,32 @@
 window.onload = function(){
     alert("Main Page Js File Loaded");
 }
+window.onload=TopicTable();
 window.onload = PublicLeaderBoard();
+function QuestionTable(){
+console.log("//TODO");
+}
+function TopicTable(){
+    $.ajax({
+        url:'InterfaceLayer/TopicTableLoader.php',
+        type:"POST",
+        dataType: 'html',
+        beforeSend:function(){
+            },
+         success: function(result,status,xhr){
+            alert("class button clicked");
+            $("#TopicTable").html(result);  
+            
+            },
+            error: function(xhr,status,error){
+                alert("Didn not retireve Topic table with success");
+            }
+            
+        }
+
+
+    )
+}
 function ClassLeaderBoard(){
     console.log("Class Leader Board Button Registed Click");
     $.ajax({
