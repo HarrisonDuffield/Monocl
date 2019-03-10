@@ -73,7 +73,19 @@ function ClassLeaderBoard(){
                 maxCounter--;
                 minCounter++;
             }
-            Console.log("Reversal Done");
+            console.log("Reversal Done");
+        }
+        function LanguageSet(LanguageToSet){
+            console.log("LanguageSetting Called with"+LanguageToSet);
+        }
+        function FrenchFlagSet(){
+            LanguageSet("FR");
+        }
+        function SpanishFlagSet(){
+            LanguageSet("ES");
+        }
+        function GermanFlagSet(){
+            LanguageSet("DE");
         }
         
         

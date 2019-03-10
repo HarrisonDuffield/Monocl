@@ -1,16 +1,12 @@
 <html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="MainPage.js"> </script>
-        <script>$(document).ready(function(){
-    $("#test").click(function(e){
-        alert("hello22");
-    })
-})</script>
-    </head>
-    <title>Main Page | Monocl</title>    
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="MainPage.js"> </script>
+</head>
+<title>Main Page | Monocl</title>    
 <a href="../MonoclBackend/QuestionTablePopulator.php"></a>
 <link href="Assets/FontAssets.css" rel="stylesheet" type="text/css">
+<link href="Assets/FlagAssetManagment.css" rel="stylesheet" type="text/css">
 <link href="Assets/CommonAssets.css" rel="stylesheet" type="text/css">
 <link href="Assets/MainPageAssets.css" rel="stylesheet" type="text/css">
 <div id="MonocleHeaderBar">
@@ -21,7 +17,7 @@
     require("../MonoclBackend/QuestionTablePopulator.php");
     TopicTableOrganisation();    
     ?>   
-    
+   
 </div>
 <div id ="course-completion-tracking-circle">
     <a> Percentage Of Language Complete : </a>
@@ -37,8 +33,11 @@
     <table id="LeaderBoard"></table>
     </div>
 </div>
-<div id ="FrenchFlag">
-    //on click set session id tag to french
+
+<div>
+	<span id="FrenchFlag" onclick ="FrenchFlagSet()"></span>
+	<span align="center" id="SpanishFlag" onclick ="SpanishFlagSet()"></span>
+	<span id="GermanFlag" onclick = "GermanFlagSet()"></span>
 </div>
 
 </html>
