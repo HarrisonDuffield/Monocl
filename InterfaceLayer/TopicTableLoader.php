@@ -1,5 +1,13 @@
 <?php
+$FunctionToCall = $_POST["functiontocall"];
 require("..\..\MonoclBackend\QuestionTablePopulator.php");
-
-TopicTableOrganisation();    
+if($FunctionToCall == 1){
+    TopicTableOrganisation();    
+}
+else if($FunctionToCall == 2){
+    BigCiclePercentageCalc();
+}
+else{
+    //do nothing
+}
 ?>

@@ -3,6 +3,7 @@ window.onload = function(){
     alert("Main Page Js File Loaded");
 }
 window.onload=TopicTable();
+
 window.onload = PublicLeaderBoard();
 function QuestionTable(){
 console.log("//TODO");
@@ -12,6 +13,7 @@ function TopicTable(){
         url:'InterfaceLayer/TopicTableLoader.php',
         type:"POST",
         dataType: 'html',
+        data : {functiontocall : 1},
         beforeSend:function(){
             },
          success: function(result,status,xhr){
@@ -24,9 +26,33 @@ function TopicTable(){
             }
             
         }
+        
 
 
     )
+    
+}
+function CirclePercentageFill(){
+    $.ajax({
+        url:'InterfaceLayer/TopicTableLoader.php',
+        type:"POST",
+        data : {functiontocall : 2},
+        beforeSend:function(){
+            },
+         success: function(result,status,xhr){
+            alert("class button clicked");
+            $("#circlePercentage").html(result);  
+            
+            },
+            error: function(xhr,status,error){
+                alert("Didn not retireve Topic table with success");
+            }
+            
+        }
+
+
+    )
+
 }
 function ClassLeaderBoard(){
     console.log("Class Leader Board Button Registed Click");
@@ -102,6 +128,23 @@ function ClassLeaderBoard(){
         }
         function LanguageSet(LanguageToSet){
             console.log("LanguageSetting Called with"+LanguageToSet);
+            $.ajax({
+                url:'InterfaceLayer/LanguageSetter.php',
+                type:"POST",
+                data : {LanguageTwoChar : LanguageToSet},
+                beforeSend:function(){
+                    },
+                 success: function(result,status,xhr){
+                    console.log("Work With Success" +result);
+                    },
+                    error: function(xhr,status,error){
+                        alert("Lanaguage did not set with success");
+                    }
+                    
+                }
+        
+        
+            )
         }
         function FrenchFlagSet(){
             LanguageSet("FR");
