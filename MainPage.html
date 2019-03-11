@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="MainPage.js"> </script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 </head>
 <title>Main Page | Monocl</title>    
 <a href="../MonoclBackend/QuestionTablePopulator.php"></a>
@@ -13,17 +15,37 @@
     <img src="Assets/Monocl.png" align="left">
 </div>
 <div id="beige-box-main">
-    <f>g</f>
-    <button type="button" onclick ="CirclePercentageFill()" id ="Refresh">Refresh </button>
-    <table id ="TopicTable"></table> 
-   
+        <table id ="TopicTable"></table>
+        <script src="MainPage.js"> </script>
+        <table id="QuestionTables"></table>
+        <script>
+        function highlight(e) {
+            if (selected[0]) selected[0].className = '';
+            e.target.parentNode.className = 'selected';
+            }
+        var TopicTable = document.getElementById('TopicTable'),
+            selected = TopicTable.getElementsByClassName('selected');
+        TopicTable.onclick = highlight;
+
+        function ViewQuestions(){
+            var TopicSelected = $("tr.selected td:first").html();
+            alert(TopicSelected);
+            QuestionTable(TopicSelected);
+        }
+        function TopicTableRecall(){
+            TopicTableFunc();
+        };
+        </script>
+        <button id="GoBack" onclick="TopicTableRecall()">Go Back To Topics</button>
+        <button id="Next" onclick="ViewQuestions()">View Questions</button>
+        
 </div>
+
+
 <div id ="course-completion-tracking-circle">
     <a> Percentage Of Language Complete : </a>
     <b id = "circlePercentage"></b>
-    <?php
-        BigCiclePercentageCalc();
-    ?>
+    
 </div>
 
 <div id="beige-box-main">

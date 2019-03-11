@@ -1,5 +1,6 @@
 <?php
 $FunctionToCall = $_POST["functiontocall"];
+$Topic = $_POST["TopicClicked"];
 require("..\..\MonoclBackend\QuestionTablePopulator.php");
 if($FunctionToCall == 1){
     TopicTableOrganisation();    
@@ -7,7 +8,11 @@ if($FunctionToCall == 1){
 else if($FunctionToCall == 2){
     BigCiclePercentageCalc();
 }
-else{
+else if($FunctionToCall == 3){
+    QuestionTableExport($Topic);
     //do nothing
+}
+else{
+    // do nothing
 }
 ?>

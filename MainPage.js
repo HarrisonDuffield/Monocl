@@ -1,27 +1,48 @@
-
-window.onload = function(){
-    alert("Main Page Js File Loaded");
-}
-window.onload=TopicTable();
-
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+/*eslint-env jquery*/
+/*eslint no-unused-vars: "error"*/
+window.onload=TopicTableFunc();
+window.onload= CirclePercentageFill();
 window.onload = PublicLeaderBoard();
-function QuestionTable(){
-console.log("//TODO");
+
+function QuestionTable(TopicToUse){
+        alert("This worked"+TopicToUse);
+        $.ajax({
+            url:'InterfaceLayer/TopicTableLoader.php',
+            type:"POST",
+            dataType: 'html',
+            data : {functiontocall : 3, TopicClicked : TopicToUse},
+            beforeSend:function(){
+                },
+             success: function(result){
+                $("#TopicTable").html(result);
+                //$("#TopicTable").html(result);  
+                
+                  
+                },
+                error: function(){
+                    alert("Didn not retireve Questions table with success");
+                }
+                
+            
+        });
 }
-function TopicTable(){
+function TopicTableFunc(){
     $.ajax({
         url:'InterfaceLayer/TopicTableLoader.php',
         type:"POST",
         dataType: 'html',
-        data : {functiontocall : 1},
+        data : {functiontocall : 1, TopicClicked : "notneeded"},
         beforeSend:function(){
             },
-         success: function(result,status,xhr){
-            alert("class button clicked");
-            $("#TopicTable").html(result);  
-            
+         success: function(result){
+            $("#TopicTable").html(result);
+            //$("#TopicTable").html(result);  
+            console.log(result);
+              
             },
-            error: function(xhr,status,error){
+            error: function(){
                 alert("Didn not retireve Topic table with success");
             }
             
@@ -29,22 +50,23 @@ function TopicTable(){
         
 
 
-    )
-    
+    );
 }
+
+
 function CirclePercentageFill(){
     $.ajax({
         url:'InterfaceLayer/TopicTableLoader.php',
         type:"POST",
-        data : {functiontocall : 2},
+        data : {functiontocall : 2, TopicClicked : "notneeded"},
         beforeSend:function(){
             },
-         success: function(result,status,xhr){
-            alert("class button clicked");
+         success: function(result){
+            
             $("#circlePercentage").html(result);  
             
             },
-            error: function(xhr,status,error){
+            error: function(){
                 alert("Didn not retireve Topic table with success");
             }
             
@@ -62,13 +84,13 @@ function ClassLeaderBoard(){
         dataType: 'html',
         beforeSend:function(){
             },
-         success: function(result,status,xhr){
-            alert("class button clicked");
+         success: function(result){
+            
             $("TableSelected").text("Class LeaderBoard Displaying");
             $("#LeaderBoard").html(result);  
             
             },
-            error: function(xhr,status,error){
+            error: function(){
                 alert("Didn not retireve class table with success");
             }
             
@@ -86,11 +108,11 @@ function ClassLeaderBoard(){
             dataType: 'html',
             beforeSend:function(){
                 },
-             success: function(result,status,xhr){
+             success: function(result){
                 $("TableSelected").text("Public LeaderBoard Displaying");
-                $("#LeaderBoard").html(result); 
+              $("#LeaderBoard").html(result); 
                 },
-                error: function(xhr,status,error){
+                error: function(){
                     alert("Didn not retireve class table with success");
                 }
                 
@@ -126,7 +148,9 @@ function ClassLeaderBoard(){
             }
             console.log("Reversal Done");
         }
+        
         function LanguageSet(LanguageToSet){
+            TopicTableFunc();//refresh the topics;
             console.log("LanguageSetting Called with"+LanguageToSet);
             $.ajax({
                 url:'InterfaceLayer/LanguageSetter.php',
@@ -134,10 +158,10 @@ function ClassLeaderBoard(){
                 data : {LanguageTwoChar : LanguageToSet},
                 beforeSend:function(){
                     },
-                 success: function(result,status,xhr){
+                 success: function(result){
                     console.log("Work With Success" +result);
                     },
-                    error: function(xhr,status,error){
+                    error: function(){
                         alert("Lanaguage did not set with success");
                     }
                     
