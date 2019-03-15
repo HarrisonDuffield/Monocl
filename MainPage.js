@@ -111,13 +111,13 @@ function ClassLeaderBoard(){
                 },
              success: function(result){
                 $("TableSelected").text("Public LeaderBoard Displaying");
-              $("#LeaderBoard").html(result); 
+                $("#LeaderBoard").html(result); 
                 },
                 error: function(){
                     alert("Didn not retireve class table with success");
                 }
                 
-            }``
+            }
     
     
         )

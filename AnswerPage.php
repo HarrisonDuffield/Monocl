@@ -4,6 +4,7 @@
 <head>
         <link href="Assets/CommonAssets.css" rel="stylesheet" type="text/css">
         <link href="Assets/AnswerPageAssets.css" rel="stylesheet" type="text/css">
+        <link href="Assets/FontAssets.css" rel="stylesheet" type="text/css">
         <title>Monocl | Answer Page</title>
         <div id="MonocleHeaderBar">
                 <img src="Assets/Monocl.png" align="left">
@@ -19,19 +20,29 @@
 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div id="QuestionBox">
-    <f id="QuestionReturn"></f>
+    <f id="QuestionReturn">The question</f>
 
 </div>
 <script >
-    window.onload(RetrieveQuestionText(<?php $_GET["TopicSelected"]?>,0));
+    var phpget = String("<?php echo $_GET["Topic"]?>");
+    window.onload=RetrieveQuestionText(phpget,0);
+    
     function RetrieveQuestionText(TopicSelected,NumberToGet){
+        console.log(NumberToGet);
         $.ajax({
-            url:"Monocl\InterfaceLayer\QuestionReturn.php",
-            type:"POST,
-            data : {QuestionToReturn:NumberToGet},
+            url:"InterfaceLayer\\QuestionReturn.php",
+                        type:"POST",
+            data : {Topic:TopicSelected,QuestionToReturn:NumberToGet},
+            
             success:function(result){
-                $(#QuestionReturn).html(result);
+                console.log(result);
+               
+               // $(#QuestionReturn).html(result);
                 NumberToGet = NumberToGet++;
+            },
+            error: function(result){
+                console.log(result);
+                console.log("Error");
             }
         })
     }

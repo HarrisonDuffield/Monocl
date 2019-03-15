@@ -1,15 +1,26 @@
 <?php
-$ValueToRetrieve = $_POST["QuestionToReturn"];
-require("..\MonoclBackend\MySQLConnectionFile.php");
+require("..\..\MonoclBackend\MySQLConnectionFile.php");
 session_start();
 $UserID = $_SESSION["UserLoggedIn"];
-$topic = $_GET["Topic"];
+$topic = $_POST["Topic"];
 $QuestionsToAsk = array();
+main();
+$Stringtoprint="test";
+function main(){
+    global $QuestionsToAsk;
+    DataCalling();
+    
+    for($i=0;$i<count($QuestionsToAsk);$i++){
+        $Stringtoprint+$QuestionsToAsk[$i]+"z";
+    }
 
-echo $QuestionsText["ValueToRetireve"];
+}
+
+echo $Stringtoprint;
+
 
 function DataCalling(){
-global $QuestionsToAsk,$QuestionText;
+global $QuestionsToAsk,$QuestionText,$topic;
 $QuestionRetrievalQuery = "SELECT * FROM questiontable WHERE Topic = $topic";
 $QuestionRetrievalExecution = mysqli_query(ConnectionReturn(),$QuestionRetrievalQuery);
 if($QuestionRetrievalExecution){
