@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+<title>Teacher Page | Monocl</title>    
+<a href="../MonoclBackend/QuestionTablePopulator.php"></a>
+<link href="Assets/FontAssets.css" rel="stylesheet" type="text/css">
+<link href="Assets/FlagAssetManagment.css" rel="stylesheet" type="text/css">
+<link href="Assets/CommonAssets.css" rel="stylesheet" type="text/css">
+<link href="Assets/MainPageAssets.css" rel="stylesheet" type="text/css">
+<div id="MonocleHeaderBar">
+    <img src="Assets/Monocl.png" align="left">
+</div>
+
+<script>
+    window.onload = ClassLeaderBoard();
+    function TableReversal(){
+            alert("TableButtonClick");
+            var maxCounter =2;//spread out like an eagle
+            var minCounter =1;
+            maxCounter = $("#LeaderBoard tr").length;
+            maxCounter=maxCounter-1;
+            console.log(maxCounter);
+            while(maxCounter > minCounter){
+                console.log("ITeration");
+                var TopNameBefore =  document.getElementById("LeaderBoard").rows[maxCounter].cells[0].innerHTML;
+                console.log(TopNameBefore);
+                var TopPointsBefore =  document.getElementById("LeaderBoard").rows[maxCounter].cells[1].innerHTML;
+                var BottomNameBefore = document.getElementById("LeaderBoard").rows[minCounter].cells[0].innerHTML;
+                var BottomPointsBefore = document.getElementById("LeaderBoard").rows[minCounter].cells[1].innerHTML;
+                document.getElementById("LeaderBoard").rows[maxCounter].cells[0].innerHTML = BottomNameBefore;
+                document.getElementById("LeaderBoard").rows[maxCounter].cells[1].innerHTML = BottomPointsBefore;
+                document.getElementById("LeaderBoard").rows[minCounter].cells[0].innerHTML = TopNameBefore;
+                document.getElementById("LeaderBoard").rows[minCounter].cells[1].innerHTML = TopPointsBefore;          
+               
+               
+               
+                
+                maxCounter--;
+                minCounter++;
+            }
+            console.log("Reversal Done");
+        }
+    function ClassLeaderBoard(){
+    console.log("Class Leader Board Button Registed Click");
+    $.ajax({
+        url:'InterfaceLayer/TeacherDisplayInterface.php',
+        type:"POST",
+        data :{FunctionToSelect :1},
+        dataType: 'html',
+        beforeSend:function(){
+            },
+         success: function(result){
+            
+            $("TableSelected").text("Class LeaderBoard Displaying");
+            $("#LeaderBoard").html(result);  
+            
+            },
+            error: function(){
+                alert("Didn not retireve class table with success");
+            }
+            
+        }
+
+
+    )
+    console.log("End Of Class LeaderBoard Function");}
+    function TableReversal(){
+
+    }
+</script>
+<div id="beige-box-main">
+        <button type="button" onclick ="TableReversal()" id ="Reversal">Sort In OppositeDirection</button>
+        <table id="LeaderBoard"></table>
+        </div>
+    </div>
+</html>
