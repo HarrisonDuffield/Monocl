@@ -6,6 +6,7 @@ window.onload=TopicTableFunc();
 window.onload= CirclePercentageFill();
 window.onload = PublicLeaderBoard();
 
+
 function QuestionTable(TopicToUse){
         alert("This worked"+TopicToUse);
         $.ajax({
@@ -116,7 +117,7 @@ function ClassLeaderBoard(){
                     alert("Didn not retireve class table with success");
                 }
                 
-            }
+            }``
     
     
         )

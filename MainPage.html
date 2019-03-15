@@ -35,9 +35,16 @@
         function TopicTableRecall(){
             TopicTableFunc();
         };
+        function AnswerQuestions(){
+            var TopicSelected = $("tr.selected td:first").html();
+            TopicSelected=TopicSelected.trim();         
+            window.location.replace("AnswerPage.php?Topic="+TopicSelected);
+            
+        }
         </script>
         <button id="GoBack" onclick="TopicTableRecall()">Go Back To Topics</button>
         <button id="Next" onclick="ViewQuestions()">View Questions</button>
+        <button id="Produtivity" onclick="AnswerQuestions()">Do Your Work </button>
         
 </div>
 
