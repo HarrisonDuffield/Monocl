@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
         <link href="Assets/CommonAssets.css" rel="stylesheet" type="text/css">
@@ -23,58 +22,91 @@
     <f id="QuestionReturn">The question</f>
 
 </div>
+<P id ="output">d</p>
 <script >
     var phpget = String("<?php echo $_GET["Topic"]?>");
-    window.onload=RetrieveQuestionText(phpget,0);
+    var QuestionCounter =0;   
+    var questionArray = Array();
+    //window.onload = PopulateDataSet();
+    window.onload=ArrayPopulator(phpget,0);
     
-    function RetrieveQuestionText(TopicSelected,NumberToGet){
+    
+    function ArrayPopulator(TopicSelected,NumberToGet){
         console.log(NumberToGet);
         $.ajax({
             url:"InterfaceLayer\\QuestionReturn.php",
                         type:"POST",
             data : {Topic:TopicSelected,QuestionToReturn:NumberToGet},
-            
+            dataType:"json",
             success:function(result){
-                console.log(result);
-               
-               // $(#QuestionReturn).html(result);
-                NumberToGet = NumberToGet++;
-            },
+                questionArray = result;
+                console.log("Array Populated");
+                console.log(questionArray);
+                QuestionLoader(0);
+               },
             error: function(result){
                 console.log(result);
                 console.log("Error");
             }
         })
     }
-    function sendtophp(QuestionID,AnswerGiven){
+    function QuestionLoader(NumberToLoad){
+        console.log("call");
+        console.log(NumberToLoad);
+        $("#QuestionID").html(NumberToLoad);
+        $("#QuestionReturn").html(questionArray[NumberToLoad]);
+        QuestionCounter++;
+    }
+       
+    
+    function CheckIfEndGoToNextQuestion(){
+        if(QuestionCounter == questionArray.sizeof){
+            console.log("reached end");
+        }
+        else{
+            QuestionLoader(QuestionCounter);
+        }
+    }
+    function sendtophp(){
+        var AnswerGiven = document.getElementById("AnswerGiven").value;
+        console.log(AnswerGiven);
         $.ajax({
-        url:'Monocl\InterfaceLayer\AnswerInterface.php',
+        url:'InterfaceLayer\\AnswerInterface.php',
         type:"POST",
-        data : {QuestionID:QuestionID,AnswerGiven:AnswerGiven},
+        data : {QuestionID:(QuestionCounter-1),AnswerGiven:AnswerGiven},
         success:function(result){
-            if(result==true){
+            console.log("ran with success");
+            if(result=="true"){
                 $("#CorrectBar").addClass("AnswerCorrect");
+                CheckIfEndGoToNextQuestion();
                 //css for green bar
             }
             else{
+                console.log(result);
+                console.log("did not run with success");
                 $("#CorrectBar").addClass("AnswerIncorrect");
+                CheckIfEndGoToNextQuestion();
 
                 //css for red bar
             }
             
             
+        },
+        error : function(result){
+            console.log(result);
         }
+
         })
 }
 
 </script>
 
 <div id="AnswerBox">
-    <form id="AnswerForm" action = "MonoclBackend\AnswerSystem.php" method="post">
         <b>Enter Your Answer Here</b>
         <br>
-        <input type = "text" name="AnswerGiven" id="AnswerGiven">
-        <button onclick =sendtophp(document.getElementById("QuestionID").value,document.getElementById("AnswerGiven").value>Send Answer</button>
-    </form>
+        <input type = "text" id="AnswerGiven">
+        <p id = "QuestionID">Question ID :</p>
+        <button onclick =sendtophp()>Send Answer</button>
+    
 
 </div>
