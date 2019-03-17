@@ -60,11 +60,16 @@
        
     
     function CheckIfEndGoToNextQuestion(){
-        if(QuestionCounter == questionArray.sizeof){
+        if(QuestionCounter == questionArray.length){
+            console.log(QuestionCounter);
+            console.log(questionArray.length);
             console.log("reached end");
         }
         else{
-            QuestionLoader(QuestionCounter);
+            console.log("triggered");
+            console.log(QuestionCounter);
+            console.log(questionArray.length);
+             QuestionLoader(QuestionCounter);
         }
     }
     function sendtophp(){
@@ -75,15 +80,15 @@
         type:"POST",
         data : {QuestionID:(QuestionCounter-1),AnswerGiven:AnswerGiven},
         success:function(result){
-            console.log("ran with success");
             if(result=="true"){
+                console.log("ran with success");
                 $("#CorrectBar").addClass("AnswerCorrect");
                 CheckIfEndGoToNextQuestion();
                 //css for green bar
             }
             else{
                 console.log(result);
-                console.log("did not run with success");
+                console.log("Answer Incorrect");
                 $("#CorrectBar").addClass("AnswerIncorrect");
                 CheckIfEndGoToNextQuestion();
 
