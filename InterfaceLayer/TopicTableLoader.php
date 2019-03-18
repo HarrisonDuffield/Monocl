@@ -12,6 +12,9 @@ else if($FunctionToCall == 3){
     QuestionTableExport($Topic);
     //do nothing
 }
+else if($FunctionToCall == 4){
+    HomeworkLoading();
+}
 else{
     // do nothing
 }

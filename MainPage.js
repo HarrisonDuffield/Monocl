@@ -5,7 +5,32 @@
 window.onload=TopicTableFunc();
 window.onload= CirclePercentageFill();
 window.onload = PublicLeaderBoard();
+window.onload = HomeworkPopulator();
 
+function HomeworkPopulator(){
+    $.ajax({
+        url:'InterfaceLayer/TopicTableLoader.php',
+        type:"POST",
+        dataType: 'html',
+        data : {functiontocall : 4, TopicClicked : "notneeded"},
+        beforeSend:function(){
+            },
+         success: function(result){
+            $("#HomeworkTable").html(result);
+            //$("#TopicTable").html(result);  
+            console.log(result);
+              
+            },
+            error: function(){
+                alert("Didn not retireve Topic table with success");
+            }
+            
+        }
+        
+
+
+    );
+}
 
 function QuestionTable(TopicToUse){
         alert("This worked"+TopicToUse);
