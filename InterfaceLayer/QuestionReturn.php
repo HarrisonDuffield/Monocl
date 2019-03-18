@@ -29,8 +29,9 @@ $QuestionRetrievalExecution = mysqli_query(ConnectionReturn(),$QuestionRetrieval
 if($QuestionRetrievalExecution){
    // echo "execution";
     foreach($QuestionRetrievalExecution as $row){
+        $stringtoreturn = (string) $row["QuestionID"]."¦".$row["QuestionText"];
         array_push($QuestionsToAsk,$row["QuestionID"]);
-        array_push($QuestionText,$row["QuestionText"]);
+        array_push($QuestionText,$stringtoreturn);
     }
     for($i=0;$i<count($QuestionsToAsk);$i++){
         $IsQuestionAnsweredQuery = "SELECT * FROM answertable  WHERE QuestionID = $QuestionsToAsk[$i] AND UserID = $UserID AND GeneralAvailibility = '1'";

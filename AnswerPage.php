@@ -22,10 +22,20 @@
     <f id="QuestionReturn">The question</f>
 
 </div>
-<P id ="output">d</p>
+
+<P id ="output"></p>
+<div id="AnswerBox">
+        <b>Enter Your Answer Here</b>
+        <br>
+        <input type = "text" id="AnswerGiven">
+        <p id = "QuestionID">Question ID :</p>
+        <button onclick =sendtophp()>Send Answer</button>
+    
+
+</div>
 <script >
     var phpget = String("<?php echo $_GET["Topic"]?>");
-    var QuestionCounter =0;   
+    var QuestionCounter =1;   
     var questionArray = Array();
     //window.onload = PopulateDataSet();
     window.onload=ArrayPopulator(phpget,0);
@@ -53,8 +63,9 @@
     function QuestionLoader(NumberToLoad){
         console.log("call");
         console.log(NumberToLoad);
-        $("#QuestionID").html(NumberToLoad);
-        $("#QuestionReturn").html(questionArray[NumberToLoad]);
+        var itemtoprint =questionArray[NumberToLoad].split("¦");
+        $("#QuestionID").html(itemtoprint[0]);
+        $("#QuestionReturn").html(itemtoprint[1]);
         QuestionCounter++;
     }
        
@@ -74,11 +85,13 @@
     }
     function sendtophp(){
         var AnswerGiven = document.getElementById("AnswerGiven").value;
+        var QuestionID = document.getElementById("QuestionID").innerHTML;
         console.log(AnswerGiven);
+        console.log(QuestionID);
         $.ajax({
         url:'InterfaceLayer\\AnswerInterface.php',
         type:"POST",
-        data : {QuestionID:(QuestionCounter-1),AnswerGiven:AnswerGiven},
+        data : {QuestionID:QuestionID,AnswerGiven:AnswerGiven},
         success:function(result){
             if(result=="true"){
                 console.log("ran with success");
@@ -105,13 +118,5 @@
 }
 
 </script>
+</html>
 
-<div id="AnswerBox">
-        <b>Enter Your Answer Here</b>
-        <br>
-        <input type = "text" id="AnswerGiven">
-        <p id = "QuestionID">Question ID :</p>
-        <button onclick =sendtophp()>Send Answer</button>
-    
-
-</div>
