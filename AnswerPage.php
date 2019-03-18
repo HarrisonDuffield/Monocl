@@ -30,6 +30,7 @@
         <input type = "text" id="AnswerGiven">
         <p id = "QuestionID">Question ID :</p>
         <button onclick =sendtophp()>Send Answer</button>
+        <button onclick =CheckIfEndGoToNextQuestion()>Skip Question</button>
     
 
 </div>
@@ -50,7 +51,7 @@
             dataType:"json",
             success:function(result){
                 questionArray = result;
-                console.log("Array Populated");
+                //console.log("Array Populated");
                 console.log(questionArray);
                 QuestionLoader(0);
                },
@@ -61,8 +62,8 @@
         })
     }
     function QuestionLoader(NumberToLoad){
-        console.log("call");
-        console.log(NumberToLoad);
+        //console.log("call");
+        //console.log(NumberToLoad);
         var itemtoprint =questionArray[NumberToLoad].split("¦");
         $("#QuestionID").html(itemtoprint[0]);
         $("#QuestionReturn").html(itemtoprint[1]);
@@ -71,17 +72,30 @@
        
     
     function CheckIfEndGoToNextQuestion(){
-        if(QuestionCounter == questionArray.length){
-            console.log(QuestionCounter);
-            console.log(questionArray.length);
+        if(QuestionCounter >= questionArray.length){
+            //console.log(QuestionCounter);
+            //console.log(questionArray.length);
             console.log("reached end");
+            alert("End of Questions \n Redirecting to Main Page");
+            window.location.replace("MainPage.html");
         }
         else{
-            console.log("triggered");
-            console.log(QuestionCounter);
-            console.log(questionArray.length);
+            //console.log("triggered");
+            //console.log(QuestionCounter);
+            //console.log(questionArray.length);
              QuestionLoader(QuestionCounter);
         }
+    }
+    function BarFormatting(){
+        VarIsCorrect = document.getElementById("CorrectBar").style.backgroundColor;
+
+        if(VarIsCorrect == "green"){
+            $("#CorrectBar").html("<a> Answer Correct<a> <button onclick =CheckIfEndGoToNextQuestion()>Next Question</button>");
+        }
+        else{
+            $("#CorrectBar").html("<a> Answer InCorrect<a> <button onclick =CheckIfEndGoToNextQuestion()>Next Question</button>");
+        }
+        
     }
     function sendtophp(){
         var AnswerGiven = document.getElementById("AnswerGiven").value;
@@ -93,16 +107,19 @@
         type:"POST",
         data : {QuestionID:QuestionID,AnswerGiven:AnswerGiven},
         success:function(result){
+            
             if(result=="true"){
-                console.log("ran with success");
-                $("#CorrectBar").addClass("AnswerCorrect");
-                CheckIfEndGoToNextQuestion();
+                alert("Answer Correct");
+                document.getElementById("CorrectBar").style.backgroundColor="green";
+                BarFormatting();
+                
                 //css for green bar
             }
             else{
                 console.log(result);
-                console.log("Answer Incorrect");
-                $("#CorrectBar").addClass("AnswerIncorrect");
+                alert("Answer Incorrect");
+                
+                document.getElementById("CorrectBar").style.backgroundColor="red";
                 CheckIfEndGoToNextQuestion();
 
                 //css for red bar

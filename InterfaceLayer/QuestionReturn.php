@@ -6,7 +6,7 @@ $topic = $_POST["Topic"];
 $questiontoget = $_POST["QuestionToReturn"];
 $QuestionsToAsk = array();
 $QuestionText = array();
-$Stringtoprint="test";
+$Stringtoprint="t";
 main();
 
 function main(){

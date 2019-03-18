@@ -1,7 +1,7 @@
 @charset "utf-8";
 #CorrectBar{
 	height:20%;
-	background-color:white;
+	background-color:whitesmoke;
 	position: fixed;
  	 bottom: 0;
  	 width: 100%;
@@ -18,7 +18,7 @@
 	position:fixed;
 	width:75%;
 	top:25%;
-	left:50%;
+	left:50;
 	display:inline-block;
 	height:10em;
 }
