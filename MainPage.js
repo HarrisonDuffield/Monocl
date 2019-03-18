@@ -151,8 +151,9 @@ function ClassLeaderBoard(){
         }
         
         function LanguageSet(LanguageToSet){
-            TopicTableFunc();//refresh the topics;
+            //refresh the topics;
             console.log("LanguageSetting Called with"+LanguageToSet);
+            
             $.ajax({
                 url:'InterfaceLayer/LanguageSetter.php',
                 type:"POST",
@@ -161,6 +162,8 @@ function ClassLeaderBoard(){
                     },
                  success: function(result){
                     console.log("Work With Success" +result);
+                    TopicTableFunc();
+                    CirclePercentageFill();
                     },
                     error: function(){
                         alert("Lanaguage did not set with success");
