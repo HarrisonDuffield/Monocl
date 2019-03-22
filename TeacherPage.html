@@ -14,10 +14,127 @@
 <div id="MonocleHeaderBar">
     <img src="Assets/Monocl.png" align="left">
 </div>
+<div id="beige-box-main">
+        <button type="button"  onclick ="TableReversal()">Sort In OppositeDirection</button>
+        <table id="LeaderBoard"></table>
+        </div>
+    </div>
+<div id = "beige-box-homeworks">
+    <table id ="HomeworkTable"></table>
+    <button id  = "GoBack" onclick="HomeworkPopulator()">GoBack</button>
+    <button id  = "MarkAsDone onclick ="MarkAsDone()">Mark As Done/Delete</button>
+</div>
+<div id="beige-box-homeworks">
+    <table id ="NewHomework"></table>
+    
+</div>
+<div id = "beige-box-homeworks">
+    //new homeowrk creator
+</div>
+
+<a color="Green" href="AnswerMarkQuestion.php">Review Answers</a>
+<a color="Green" href="QuestionCreator.php">Create New Question</a>
 
 <script>
+
     window.onload = ClassLeaderBoard();
+    window.onload = HomeworkPopulator();
+    window.onload = $("#GoBack").hide();
+    window.onload = $("#MarkAsDone").hide();
+
+    function ShowWhosCompletedTableReturn(HomeworkID){
+        
+        $.ajax({
+            url:'InterfaceLayer/TeacherDisplayInterface.php',
+            type:"POST",
+            dataType: 'html',
+            data : {FunctionToSelect : 2, HomeworkID:HomeworkID},
+            beforeSend:function(){
+                },
+             success: function(result){
+                 console.log(result);
+                $("#HomeworkTable").html(result);
+                //$("#TopicTable").html(result);  
+                
+                  
+                },
+                error: function(){
+                    alert("Didn not retireve Questions table with success");
+                }
+                
+            
+        });
+}
+
+    function highlight(e) {
+            if (selected[0]) selected[0].className = '';
+            e.target.parentNode.className = 'selected';
+            ViewWhosCompleted();
+            }
+        var TopicTable = document.getElementById('HomeworkTable'),
+        selected = TopicTable.getElementsByClassName('selected');
+        TopicTable.onclick = highlight;
+        
+        function ViewWhosCompleted(){
+            var HomeworkID = $("tr.selected td:first").html();
+            alert(HomeworkID);
+            $("#MarkAsDone").show();
+            $("#GoBack").show();
+            ShowWhosCompletedTableReturn(HomeworkID);
+            
+        }
+        function MarkAsDone(){
+            var HomeworkID = $("tr.selected td:first").html();
+            $.ajax({
+            url:'InterfaceLayer/TeacherDisplayInterface.php',
+            type:"POST",
+            dataType: 'html',
+            data : {FunctionToSelect : 3, HomeworkID:HomeworkID},
+            beforeSend:function(){
+                },
+             success: function(result){
+                 console.log(result);
+                 HomeworkPopulator();
+                //$("#HomeworkTable").html(result);
+                //$("#TopicTable").html(result);  
+                
+                  
+                },
+                error: function(){
+                    alert("Didn not retireve Questions table with success");
+                }
+                
+            
+        });
+        }
+
+
+function HomeworkPopulator(){
+    $.ajax({
+        url:'InterfaceLayer/TopicTableLoader.php',
+        type:"POST",
+        dataType: 'html',
+        data : {functiontocall : 4, TopicClicked : "notneeded"},
+        beforeSend:function(){
+            },
+         success: function(result){
+            $("#HomeworkTable").html(result);
+            //$("#TopicTable").html(result);  
+            console.log(result);
+              
+            },
+            error: function(){
+                alert("Didn not retireve Topic table with success");
+            }
+            
+        }
+        
+
+
+    );
+}
     function TableReversal(){
+            console.log("clicked");
             alert("TableButtonClick");
             var maxCounter =2;//spread out like an eagle
             var minCounter =1;
@@ -49,7 +166,7 @@
     $.ajax({
         url:'InterfaceLayer/TeacherDisplayInterface.php',
         type:"POST",
-        data :{FunctionToSelect :1},
+        data :{FunctionToSelect :1,HomeworkID:"notneeded"},
         dataType: 'html',
         beforeSend:function(){
             },
@@ -68,13 +185,7 @@
 
     )
     console.log("End Of Class LeaderBoard Function");}
-    function TableReversal(){
-
-    }
+    
 </script>
-<div id="beige-box-main">
-        <button type="button" onclick ="TableReversal()" id ="Reversal">Sort In OppositeDirection</button>
-        <table id="LeaderBoard"></table>
-        </div>
-    </div>
+
 </html>
